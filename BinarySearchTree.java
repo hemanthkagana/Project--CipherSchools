@@ -30,6 +30,48 @@ class BinarySearchTree {
         root = deleteHelper(root, value);
     }
 
+    // In-order traversal
+    public void inOrderTraversal() {
+        inOrderHelper(root);
+        System.out.println();
+    }
+
+    private void inOrderHelper(Node node) {
+        if (node != null) {
+            inOrderHelper(node.left);
+            System.out.print(node.data + " ");
+            inOrderHelper(node.right);
+        }
+    }
+
+    // Pre-order traversal
+    public void preOrderTraversal() {
+        preOrderHelper(root);
+        System.out.println();
+    }
+
+    private void preOrderHelper(Node node) {
+        if (node != null) {
+            System.out.print(node.data + " ");
+            preOrderHelper(node.left);
+            preOrderHelper(node.right);
+        }
+    }
+
+    // Post-order traversal
+    public void postOrderTraversal() {
+        postOrderHelper(root);
+        System.out.println();
+    }
+
+    private void postOrderHelper(Node node) {
+        if (node != null) {
+            postOrderHelper(node.left);
+            postOrderHelper(node.right);
+            System.out.print(node.data + " ");
+        }
+    }
+
     // Helper method for searching a value
     private boolean searchHelper(Node node, int value) {
         if (node == null) {
@@ -99,8 +141,17 @@ class BinarySearchTree {
         bst.insert(60);
         bst.insert(80);
 
-        System.out.println(bst.search(50)); // Output: true
+        System.out.println("In-order Traversal:");
+        bst.inOrderTraversal();
+
+        System.out.println("Pre-order Traversal:");
+        bst.preOrderTraversal();
+
+        System.out.println("Post-order Traversal:");
+        bst.postOrderTraversal();
+
+        System.out.println("Search 50: " + bst.search(50)); // Output: true
         bst.deleteNode(20);
-        System.out.println(bst.search(20)); // Output: false
+        System.out.println("Search 20: " + bst.search(20)); // Output: false
     }
 }
